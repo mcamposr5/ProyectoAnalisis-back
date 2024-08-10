@@ -30,6 +30,12 @@
         <java.version>17</java.version>
     </properties>
     <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -80,10 +86,6 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.integration</groupId>
-            <artifactId>spring-integration-security</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.integration</groupId>
             <artifactId>spring-integration-stomp</artifactId>
         </dependency>
         <dependency>
@@ -122,6 +124,11 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <dependency>
+    <groupId>jakarta.persistence</groupId>
+    <artifactId>jakarta.persistence-api</artifactId>
+    <version>3.0.0</version>
+</dependency>
 
     <build>
         <plugins>
