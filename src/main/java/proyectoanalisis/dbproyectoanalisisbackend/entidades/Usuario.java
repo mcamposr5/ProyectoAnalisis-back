@@ -1,219 +1,221 @@
-package proyectoanalisis.dbproyectoanalisisbackend.entidades;
+    package proyectoanalisis.dbproyectoanalisisbackend.entidades;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
-import jakarta.persistence.*;
+    import java.time.LocalDate;
+    import java.time.LocalDateTime;
+    import jakarta.persistence.Entity;
+    import jakarta.persistence.Id;
+    import jakarta.persistence.Lob;
+    import jakarta.persistence.Table;
+    import jakarta.persistence.*;
 
-@Entity // definimos la clase del tipo entidad
-@Table(name = "usuario") // definimos la clase como el tipo tabla enlazado a la tabla usuario
-public class Usuario {
+    @Entity // definimos la clase del tipo entidad
+    @Table(name = "usuario") // definimos la clase como el tipo tabla enlazado a la tabla usuario
+    public class Usuario {
 
-    @Id // Definimos el IdUsuario como un identificador único
-    //@GeneratedValue(strategy = GenerationType.IDENTITY) // Definimos el ID como una estrategia autoincremental, no aplica ya que por el lado de la base de datos este campo esta como varchar
-    private String idUsuario;
+        @Id // Definimos el IdUsuario como un identificador único
+        //@GeneratedValue(strategy = GenerationType.IDENTITY) // Definimos el ID como una estrategia autoincremental, no aplica ya que por el lado de la base de datos este campo esta como varchar
+        @Column(name = "IdUsuario")
+        private String IdUsuario;
+        
+        private String Nombre;
 
-    private String nombre;
+        private String Apellido;
 
-    private String apellido;
+        private LocalDate FechaNacimiento; // Para DATE
 
-    private LocalDate fechaNacimiento; // Para DATE
+        private Integer IdStatusUsuario;
 
-    private Long idStatusUsuario;
+        private String Password;
 
-    private String password;
+        private Integer IdGenero;
 
-    private Long idGenero;
+        private LocalDateTime UltimaFechaIngreso; // Para DATETIME
 
-    private LocalDateTime ultimaFechaIngreso; // Para DATETIME
+        private Integer IntentosDeAcceso;
 
-    private Long intentosDeAcceso;
+        private String SesionActual;
 
-    private String sesionActual;
+        private LocalDateTime UltimaFechaCambioPassword; // Para DATETIME
 
-    private LocalDateTime ultimaFechaCambioPassword; // Para DATETIME
+        private String CorreoElectronico;
 
-    private String correoElectronico;
+        private Integer RequiereCambiarPassword;
 
-    private Long requiereCambiarPassword;
+        @Lob // Indica que el tipo de dato a utilizar es muy grande
+        @Column(name = "Fotografia", columnDefinition = "MEDIUMBLOB")    //Especifica que a nivel de la base de datos la columna fotografia es del tipo Medium
+        private byte[] Fotografia;
 
-    @Lob // Indica que el tipo de dato a utilizar es muy grande
-    @Column(name = "fotografia", columnDefinition = "MEDIUMBLOB")    //Especifica que a nivel de la base de datos la columna fotografia es del tipo Medium
-    private byte[] fotografia;
+        private String TelefonoMovil;
 
-    private Long telefonoMovil;
+        private Integer IdSucursal;
 
-    private Long idSucursal;
+        private LocalDateTime FechaCreacion; // Para DATETIME
 
-    private LocalDateTime fechaCreacion; // Para DATETIME
+        private String UsuarioCreacion;
 
-    private String usuarioCreacion;
+        private LocalDateTime FechaModificacion; // Para DATETIME
 
-    private LocalDateTime fechaModificacion; // Para DATETIME
+        private String UsuarioModificacion;
 
-    private String usuarioModificacion;
+        // Getters y setters
+        public String getIdUsuario() {
+            return IdUsuario;
+        }
 
-    // Getters y setters
-    public String getIdUsuario() {
-        return idUsuario;
+        public void setIdUsuario(String idUsuario) {
+            IdUsuario = idUsuario;
+        }
+
+        public String getNombre() {
+            return Nombre;
+        }
+
+        public void setNombre(String nombre) {
+            Nombre = nombre;
+        }
+
+        public String getApellido() {
+            return Apellido;
+        }
+
+        public void setApellido(String apellido) {
+            Apellido = apellido;
+        }
+
+        public LocalDate getFechaNacimiento() {
+            return FechaNacimiento;
+        }
+
+        public void setFechaNacimiento(LocalDate fechaNacimiento) {
+            FechaNacimiento = fechaNacimiento;
+        }
+
+        public Integer getIdStatusUsuario() {
+            return IdStatusUsuario;
+        }
+
+        public void setIdStatusUsuario(Integer idStatusUsuario) {
+            IdStatusUsuario = idStatusUsuario;
+        }
+
+        public String getPassword() {
+            return Password;
+        }
+
+        public void setPassword(String password) {
+            Password = password;
+        }
+
+        public Integer getIdGenero() {
+            return IdGenero;
+        }
+
+        public void setIdGenero(Integer idGenero) {
+            IdGenero = idGenero;
+        }
+
+        public LocalDateTime getUltimaFechaIngreso() {
+            return UltimaFechaIngreso;
+        }
+
+        public void setUltimaFechaIngreso(LocalDateTime ultimaFechaIngreso) {
+            UltimaFechaIngreso = ultimaFechaIngreso;
+        }
+
+        public Integer getIntentosDeAcceso() {
+            return IntentosDeAcceso;
+        }
+
+        public void setIntentosDeAcceso(Integer intentosDeAcceso) {
+            IntentosDeAcceso = intentosDeAcceso;
+        }
+
+        public String getSesionActual() {
+            return SesionActual;
+        }
+
+        public void setSesionActual(String sesionActual) {
+            SesionActual = sesionActual;
+        }
+
+        public LocalDateTime getUltimaFechaCambioPassword() {
+            return UltimaFechaCambioPassword;
+        }
+
+        public void setUltimaFechaCambioPassword(LocalDateTime ultimaFechaCambioPassword) {
+            UltimaFechaCambioPassword = ultimaFechaCambioPassword;
+        }
+
+        public String getCorreoElectronico() {
+            return CorreoElectronico;
+        }
+
+        public void setCorreoElectronico(String correoElectronico) {
+            CorreoElectronico = correoElectronico;
+        }
+
+        public Integer getRequiereCambiarPassword() {
+            return RequiereCambiarPassword;
+        }
+
+        public void setRequiereCambiarPassword(Integer requiereCambiarPassword) {
+            RequiereCambiarPassword = requiereCambiarPassword;
+        }
+
+        public byte[] getFotografia() {
+            return Fotografia;
+        }
+
+        public void setFotografia(byte[] fotografia) {
+            Fotografia = fotografia;
+        }
+
+        public String getTelefonoMovil() {
+            return TelefonoMovil;
+        }
+
+        public void setTelefonoMovil(String telefonoMovil) {
+            TelefonoMovil = telefonoMovil;
+        }
+
+        public Integer getIdSucursal() {
+            return IdSucursal;
+        }
+
+        public void setIdSucursal(Integer idSucursal) {
+            IdSucursal = idSucursal;
+        }
+
+        public LocalDateTime getFechaCreacion() {
+            return FechaCreacion;
+        }
+
+        public void setFechaCreacion(LocalDateTime fechaCreacion) {
+            FechaCreacion = fechaCreacion;
+        }
+
+        public String getUsuarioCreacion() {
+            return UsuarioCreacion;
+        }
+
+        public void setUsuarioCreacion(String usuarioCreacion) {
+            UsuarioCreacion = usuarioCreacion;
+        }
+
+        public LocalDateTime getFechaModificacion() {
+            return FechaModificacion;
+        }
+
+        public void setFechaModificacion(LocalDateTime fechaModificacion) {
+            FechaModificacion = fechaModificacion;
+        }
+
+        public String getUsuarioModificacion() {
+            return UsuarioModificacion;
+        }
+
+        public void setUsuarioModificacion(String usuarioModificacion) {
+            UsuarioModificacion = usuarioModificacion;
+        }    
+        
     }
-
-    public void setIdUsuario(String idUsuario) {
-        this.idUsuario = idUsuario;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public LocalDate getFechaNacimiento() {
-        return fechaNacimiento;
-    }
-
-    public void setFechaNacimiento(LocalDate fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
-    }
-
-    public Long getIdStatusUsuario() {
-        return idStatusUsuario;
-    }
-
-    public void setIdStatusUsuario(Long idStatusUsuario) {
-        this.idStatusUsuario = idStatusUsuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public Long getIdGenero() {
-        return idGenero;
-    }
-
-    public void setIdGenero(Long idGenero) {
-        this.idGenero = idGenero;
-    }
-
-    public LocalDateTime getUltimaFechaIngreso() {
-        return ultimaFechaIngreso;
-    }
-
-    public void setUltimaFechaIngreso(LocalDateTime ultimaFechaIngreso) {
-        this.ultimaFechaIngreso = ultimaFechaIngreso;
-    }
-
-    public Long getIntentosDeAcceso() {
-        return intentosDeAcceso;
-    }
-
-    public void setIntentosDeAcceso(Long intentosDeAcceso) {
-        this.intentosDeAcceso = intentosDeAcceso;
-    }
-
-    public String getSesionActual() {
-        return sesionActual;
-    }
-
-    public void setSesionActual(String sesionActual) {
-        this.sesionActual = sesionActual;
-    }
-
-    public LocalDateTime getUltimaFechaCambioPassword() {
-        return ultimaFechaCambioPassword;
-    }
-
-    public void setUltimaFechaCambioPassword(LocalDateTime ultimaFechaCambioPassword) {
-        this.ultimaFechaCambioPassword = ultimaFechaCambioPassword;
-    }
-
-    public String getCorreoElectronico() {
-        return correoElectronico;
-    }
-
-    public void setCorreoElectronico(String correoElectronico) {
-        this.correoElectronico = correoElectronico;
-    }
-
-    public Long getRequiereCambiarPassword() {
-        return requiereCambiarPassword;
-    }
-
-    public void setRequiereCambiarPassword(Long requiereCambiarPassword) {
-        this.requiereCambiarPassword = requiereCambiarPassword;
-    }
-
-    public byte[] getFotografia() {
-        return fotografia;
-    }
-
-    public void setFotografia(byte[] fotografia) {
-        this.fotografia = fotografia;
-    }
-
-    public Long getTelefonoMovil() {
-        return telefonoMovil;
-    }
-
-    public void setTelefonoMovil(Long telefonoMovil) {
-        this.telefonoMovil = telefonoMovil;
-    }
-
-    public Long getIdSucursal() {
-        return idSucursal;
-    }
-
-    public void setIdSucursal(Long idSucursal) {
-        this.idSucursal = idSucursal;
-    }
-
-    public LocalDateTime getFechaCreacion() {
-        return fechaCreacion;
-    }
-
-    public void setFechaCreacion(LocalDateTime fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
-    }
-
-    public String getUsuarioCreacion() {
-        return usuarioCreacion;
-    }
-
-    public void setUsuarioCreacion(String usuarioCreacion) {
-        this.usuarioCreacion = usuarioCreacion;
-    }
-
-    public LocalDateTime getFechaModificacion() {
-        return fechaModificacion;
-    }
-
-    public void setFechaModificacion(LocalDateTime fechaModificacion) {
-        this.fechaModificacion = fechaModificacion;
-    }
-
-    public String getUsuarioModificacion() {
-        return usuarioModificacion;
-    }
-
-    public void setUsuarioModificacion(String usuarioModificacion) {
-        this.usuarioModificacion = usuarioModificacion;
-    }
-}

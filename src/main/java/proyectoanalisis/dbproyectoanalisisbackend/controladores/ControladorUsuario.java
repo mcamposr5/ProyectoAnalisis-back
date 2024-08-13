@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,11 +30,12 @@ se comunica con la base de datos
 public class ControladorUsuario {
 
     // Implimentando los metodos del request
+    @Autowired
     private ServicioUsuario service;
 
     @GetMapping
     public List<Usuario> list() {
-        return service.findAll();
+        return (List<Usuario>) service.findAll();
     }
 
     @GetMapping("/{IdUsuario}")
@@ -42,7 +44,7 @@ public class ControladorUsuario {
         if(usuarioOpcional.isPresent()){
             return ResponseEntity.status(HttpStatus.OK).body(usuarioOpcional.orElseThrow());
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", "No se encontro registro de usuario con el Id" + IdUsuario));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(Collections.singletonMap("error", "No se encontro registro de usuario con el Id: " + IdUsuario));
     }
 
     @PostMapping
@@ -58,6 +60,7 @@ public class ControladorUsuario {
         if(usuarioOpcional.isPresent()){
             // Definiendo únicamente los campos que requiero poder modificar del usuario
             Usuario usrDB = usuarioOpcional.get();
+            //usrDB.setIdUsuario(usuario.getIdUsuario()); // No tomar en cuenta para futuras actualizaciones, el ID no debe poder ser actualizado
             usrDB.setNombre(usuario.getNombre());
             usrDB.setApellido(usuario.getApellido());
             usrDB.setCorreoElectronico(usuario.getCorreoElectronico());

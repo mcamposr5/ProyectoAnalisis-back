@@ -2,10 +2,9 @@ package proyectoanalisis.dbproyectoanalisisbackend.servicios;
 
 import java.util.List;
 import java.util.Optional;
-
 import proyectoanalisis.dbproyectoanalisisbackend.entidades.Usuario;
 
-public interface ServicioUsuario {
+public interface ServicioUsuario{
 
     List<Usuario> findAll();
 

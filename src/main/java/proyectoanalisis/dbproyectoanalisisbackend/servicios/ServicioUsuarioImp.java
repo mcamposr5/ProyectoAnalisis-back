@@ -12,7 +12,7 @@ import proyectoanalisis.dbproyectoanalisisbackend.repositorios.RepositorioUsuari
 @Service //Esta anotacion la utilizamos para indicar que es una clase service, definimos la lógica de negocio
 public class ServicioUsuarioImp implements ServicioUsuario{
 
-    private final RepositorioUsuario repositorio;
+    private RepositorioUsuario repositorio;
     
     public ServicioUsuarioImp(RepositorioUsuario repositorio){
         this.repositorio = repositorio;
