@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.RestController;
 import proyectoanalisis.dbproyectoanalisisbackend.entidades.Usuario;
 import proyectoanalisis.dbproyectoanalisisbackend.servicios.ServicioUsuario;
 
+import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -60,15 +61,14 @@ public class ControladorUsuario {
     public ResponseEntity<Usuario> ActualizarUsuario(@PathVariable String IdUsuario, @RequestBody Usuario usuario) {
         Optional<Usuario> usuarioOpcional = service.findById(IdUsuario);
         if(usuarioOpcional.isPresent()){
-            // Definiendo únicamente los campos que requiero poder modificar del usuario
             Usuario usrDB = usuarioOpcional.get();
-            //usrDB.setIdUsuario(usuario.getIdUsuario()); // No tomar en cuenta para futuras actualizaciones, el ID no debe poder ser actualizado
+            usrDB.setIdUsuario(usuario.getIdUsuario()); // No tomar en cuenta para futuras actualizaciones, el ID no debe poder ser actualizado
             usrDB.setNombre(usuario.getNombre());
             usrDB.setApellido(usuario.getApellido());
             usrDB.setCorreoElectronico(usuario.getCorreoElectronico());
             usrDB.setFechaNacimiento(usuario.getFechaNacimiento());
+            usrDB.setFechaCreacion(LocalDateTime.now());
             usrDB.setPassword(usuario.getPassword());
-            usrDB.setIdGenero(usuario.getIdGenero());
             usrDB.setFotografia(usuario.getFotografia());
             return ResponseEntity.ok(service.save(usrDB));
         }
